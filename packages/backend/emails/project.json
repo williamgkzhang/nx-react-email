@@ -1,0 +1,39 @@
+{
+  "name": "backend-emails",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/backend/emails/src",
+  "projectType": "library",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/backend/emails",
+        "command": "email dev --dir=src/lib --port=3025"
+      }
+    },
+    "serveFromWorkspace": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "email dev --dir=packages/backend/emails/src/lib --port=3025"
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/backend/emails",
+        "main": "packages/backend/emails/src/index.ts",
+        "tsConfig": "packages/backend/emails/tsconfig.lib.json",
+        "assets": ["packages/backend/emails/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/backend/emails/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

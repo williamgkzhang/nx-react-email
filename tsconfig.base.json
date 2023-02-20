@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-react-email/backend/emails": ["packages/backend/emails/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
